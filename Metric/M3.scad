@@ -67,6 +67,8 @@ module M3_InsertAndMountHole1( aZ0, aZ1 )
 module M3_Shank_X( aLength ) { Cylinder_X( aLength, SHANK_R, 30 ); }
 module M3_Shank_Z( aLength ) { Cylinder_Z( aLength, SHANK_R, 30 ); }
 
+module M3_Thread_Z( aLength ) { Cylinder_Z( aLength, THREAD_R, 8 ); }
+
 // Private
 /////////////////////////////////////////////////////////////////////////////
 
@@ -82,3 +84,5 @@ INSERT_R0     = 2.1;
 INSERT_R1     = 2.2;
 
 SHANK_R = 1.7;
+
+THREAD_R = 1.5;
