@@ -16,11 +16,18 @@ M4_Ov             =  0.1;
 // Public modules
 /////////////////////////////////////////////////////////////////////////////
 
+module M4_Head_Y( aLength ) { Cylinder_Y( aLength, HEAD_R, 30 ); }
 module M4_Head_Z( aLength ) { Cylinder_Z( aLength, HEAD_R, 30 ); }
 
 module M4_Insert_X() { rotate( [ 0, 90, 0 ] ) cylinder( INSERT_LENGTH + EPS, INSERT_R1, INSERT_R0, $fn = 20 ); }
 
 module M4_Insert_ZR() { cylinder( INSERT_LENGTH + EPS, INSERT_R1, INSERT_R0, $fn = 20 ); }
+
+module M4_Hex_Y( aLength )
+{
+    rotate( [ - 90, 0, 0 ] )
+        cylinder( aLength + EPS, HEX_R0, HEX_R1, $fn = 6 );
+}
 
 module M4_Hex_ZR() { cylinder( INSERT_LENGTH + EPS, HEX_R1, HEX_R0, $fn = 6 ); }
 
@@ -57,6 +64,7 @@ module M4_InsertAndMountHole1( aZ0, aZ1 )
 }
 
 module M4_Shank_X( aLength ) { Cylinder_X( aLength, SHANK_R, 30 ); }
+module M4_Shank_Y( aLength ) { Cylinder_Y( aLength, SHANK_R, 30 ); }
 module M4_Shank_Z( aLength ) { Cylinder_Z( aLength, SHANK_R, 30 ); }
 
 // Private
@@ -66,8 +74,8 @@ EPS = 0.1;
 
 HEAD_R = 4.3;
 
-HEX_R0 = 4.7;
-HEX_R1 = 4.8;
+HEX_R0 = 4.4;
+HEX_R1 = 4.5;
 
 INSERT_LENGTH = 4;
 INSERT_R0     = 2.8;
