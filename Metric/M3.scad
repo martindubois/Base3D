@@ -5,6 +5,8 @@
 
 use <../Cylinder.scad>
 
+M3_Spacer(3);
+
 // Public constants
 /////////////////////////////////////////////////////////////////////////////
 
@@ -24,6 +26,7 @@ M3_Ov             =  0.1;
 // Public modules
 /////////////////////////////////////////////////////////////////////////////
 
+module M3_Head_Y( aLength ) { Cylinder_Y( aLength, HEAD_R, 30 ); }
 module M3_Head_Z( aLength ) { Cylinder_Z( aLength, HEAD_R, 30 ); }
 
 module M3_Insert_X() { rotate( [ 0, 90, 0 ] ) cylinder( INSERT_LENGTH + EPS, INSERT_R1, INSERT_R0, $fn = 20 ); }
@@ -65,8 +68,22 @@ module M3_InsertAndMountHole1( aZ0, aZ1 )
 }
 
 module M3_Shank_X( aLength ) { Cylinder_X( aLength, SHANK_R, 30 ); }
+module M3_Shank_Y( aLength ) { Cylinder_Y( aLength, SHANK_R, 30 ); }
 module M3_Shank_Z( aLength ) { Cylinder_Z( aLength, SHANK_R, 30 ); }
 
+module M3_Spacer( aLength )
+{
+    difference()
+    {
+        cylinder( aLength, SHANK_R + 1.5, SHANK_R + 1.5, $fn = M3_FN );
+
+        translate( [ 0, 0, - EPS ] )
+            cylinder( 2 * EPS + aLength, SHANK_R, SHANK_R, $fn = M3_FN );
+    }
+}
+
+module M3_Thread_X( aLength ) { Cylinder_X( aLength, THREAD_R, 8 ); }
+module M3_Thread_Y( aLength ) { Cylinder_Y( aLength, THREAD_R, 8 ); }
 module M3_Thread_Z( aLength ) { Cylinder_Z( aLength, THREAD_R, 8 ); }
 
 // Private
